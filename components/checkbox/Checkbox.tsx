@@ -3,6 +3,11 @@ import { TouchableWithoutFeedback, Image, View, Text } from 'react-native';
 import { CheckboxProps } from './PropsType';
 import CheckboxStyle from './style/index';
 
+import checkedDisabledIcon from './image/checked_disable.png';
+import checkedIcon from './image/checked.png';
+import normalDisabledIcon from './image/normal_disable.png';
+import normalIcon from './image/normal.png';
+
 export default class Checkbox extends React.Component<CheckboxProps, any> {
   static CheckboxItem: any;
   static AgreeItem: any;
@@ -47,17 +52,9 @@ export default class Checkbox extends React.Component<CheckboxProps, any> {
     let checked = this.state.checked;
     let imgSrc;
     if (checked) {
-      if (disabled) {
-        imgSrc = require('./image/checked_disable.png');
-      } else {
-        imgSrc = require('./image/checked.png');
-      }
+      imgSrc = disabled ? checkedDisabledIcon : checkedIcon;
     } else {
-      if (disabled) {
-        imgSrc = require('./image/normal_disable.png');
-      } else {
-        imgSrc = require('./image/normal.png');
-      }
+      imgSrc = disabled ? normalDisabledIcon : normalIcon;
     }
 
     return (
